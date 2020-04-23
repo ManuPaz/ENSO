@@ -1,4 +1,4 @@
-package PrjGrupo1A;
+package codigo;
 
 public interface InterfaceSeleccionMenus {
 
