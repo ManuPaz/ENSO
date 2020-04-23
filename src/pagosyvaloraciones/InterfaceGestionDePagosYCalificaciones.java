@@ -1,4 +1,4 @@
-package codigo;
+package pagosyvaloraciones;
 
 public interface InterfaceGestionDePagosYCalificaciones {
 

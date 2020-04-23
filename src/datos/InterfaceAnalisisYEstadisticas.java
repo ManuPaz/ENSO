@@ -1,4 +1,4 @@
-package codigo;
+package datos;
 
 public interface InterfaceAnalisisYEstadisticas {
 	

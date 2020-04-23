@@ -1,4 +1,4 @@
-package codigo;
+package menus;
 
 public interface InterfaceGestionDeMenus {
 
