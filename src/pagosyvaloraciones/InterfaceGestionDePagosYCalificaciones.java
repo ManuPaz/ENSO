@@ -1,5 +1,8 @@
 package pagosyvaloraciones;
 
+import java.util.Date;
+import menus.*;
+
 public interface InterfaceGestionDePagosYCalificaciones {
 
 	//Crear factura

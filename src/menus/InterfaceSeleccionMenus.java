@@ -1,5 +1,7 @@
 package menus;
 
+import java.util.ArrayList;
+
 public interface InterfaceSeleccionMenus {
 
 	//Seleccionar los platos del menú

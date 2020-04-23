@@ -1,5 +1,9 @@
 package datos;
 
+import java.util.ArrayList;
+import pagosyvaloraciones.*;
+import menus.*;
+
 public interface InterfaceDeGestionDeDatos {
 
 	public void insertarFactura(Factura factura);

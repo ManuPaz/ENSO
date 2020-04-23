@@ -1,5 +1,9 @@
 package datos;
 
+import java.util.ArrayList;
+import java.util.Date;
+import menus.*;
+
 public interface InterfaceAnalisisYEstadisticas {
 	
 	public String platoMasPedido();
