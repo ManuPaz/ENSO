@@ -6,9 +6,9 @@ import menus.*;
 
 public interface InterfaceGestionDeMenus {
 
-	public void construirMenuDia(Date fecha, ArrayList<String> primeros, ArrayList<String> segundos, ArrayList<String> postres);
+	public void construirMenuDia();
 	
-	public ArrayList<Plato> obtenerPlatosDisponibles();
+	public ArrayList<Plato> obtenerPlatosDisponibles(String tipo);
 	
 	public Menu obtenerMenuDia(Date fecha);
 	

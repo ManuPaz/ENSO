@@ -3,7 +3,13 @@ package menus;
 public class Plato {
 
 	String nombre;
-	String tipo;
+	String tipo;//Primero,Segundo,Postre
+	
+	public Plato(String nombre, String tipo) {
+		this.nombre=nombre;
+		this.tipo=tipo;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

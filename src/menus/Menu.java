@@ -17,6 +17,15 @@ public class Menu {
 		this.postres = postres;
 		this.fecha = fecha;
 	}
+	
+	public Menu() {
+		super();
+		this.primeros = new ArrayList<String>();
+		this.segundos = new ArrayList<String>();
+		this.postres = new ArrayList<String>();
+		this.fecha = new ArrayList<String>();
+	}
+	
 	public ArrayList<String> getPrimeros() {
 		return primeros;
 	}

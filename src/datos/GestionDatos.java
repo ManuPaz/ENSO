@@ -47,7 +47,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 
 	@Override
 	public Menu consultarMenuHoy() {
-		// TODO Auto-generated method stub
+		// Aquí hay que comprobar la fecha
 		return null;
 	}
 

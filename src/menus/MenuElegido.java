@@ -7,12 +7,19 @@ public class MenuElegido {
 	String postre;
 	String bebida;
 	
-	public void MenuElegido(String primero, String segundo, String postre, String bebida) {
+	public MenuElegido(String primero, String segundo, String postre, String bebida) {
 		this.primero=primero;
 		this.segundo=segundo;
 		this.postre=postre;
 		this.bebida=bebida;
 	
+	}
+	
+	public MenuElegido() {
+		this.primero="";
+		this.segundo="";
+		this.postre="";
+		this.getBebida();
 	}
 
 	public String getPrimero() {

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public interface InterfaceSeleccionMenus {
 
-	//Seleccionar los platos del menú
-	public MenuElegido seleccionarMenu(String primero, String segundo, String bebida, String postre);
+	//Seleccionar los platos del menï¿½
+	public void seleccionarMenu();
 	
-	//Coger todos los platos del menú del día
+	//Coger todos los platos del menï¿½ del dï¿½a
 	public void ofrecerMenu();
 	
 	public ArrayList<String> ofrecerBebidas();
