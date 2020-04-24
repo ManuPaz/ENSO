@@ -23,7 +23,7 @@ public class Menu {
 		this.primeros = new ArrayList<String>();
 		this.segundos = new ArrayList<String>();
 		this.postres = new ArrayList<String>();
-		this.fecha = new ArrayList<String>();
+		this.fecha = new Date();;
 	}
 	
 	public ArrayList<String> getPrimeros() {
