@@ -1,24 +1,25 @@
 package datos;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import menus.*;
 
 public interface InterfaceAnalisisYEstadisticas {
 	
-	public String platoMasPedido();
+	public ArrayList<String> platoMasPedido();
 	
-	public String platoMasValorado();
+	public ArrayList<String> platoMasValorado();
 	
-	public String platoMenosPedido();
+	public ArrayList<String> platoMenosPedido();
 	
-	public String platoMenosValorado();
+	public ArrayList<String> platoMenosValorado();
 	
 	public int ocupacionComedor();
 	
-	public Date horaMasFrecuente();
+	public ArrayList<Integer> horaMasFrecuente();
 	
-	public Date tiempoMedioDuracion();
+	public int tiempoMedioDuracion();
 	
 	public ArrayList<Plato> rankingValoracion();
 }
