@@ -50,7 +50,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
                 	platos.add(plato);
                 }
             }
-
+            br.close();
             fr.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -95,6 +95,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
                 	valoraciones.add(valoracion);
                 }
             }
+            br.close();
             fr.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -122,8 +123,52 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 
 	@Override
 	public Menu consultarMenuHoy() {
-		// Aqui hay que comprobar la fecha
-		return null;
+		
+		Date hoy = new Date();
+		String hoyFormateado = new SimpleDateFormat("dd-MM-yyyy").format(hoy);
+		
+		String linea;
+        String[] partes;
+
+        try {
+            FileReader fr = new FileReader("ficheros\\menus.txt");
+            BufferedReader br = new BufferedReader(fr);
+
+            while ((linea = br.readLine()) != null) {
+                partes = linea.split(",");
+                if(partes.length==10) {
+                	String fechaMenu = partes[0];
+                	if(fechaMenu.equals(hoyFormateado)) {
+                		ArrayList<String> primeros = new ArrayList<>();
+                		ArrayList<String> segundos = new ArrayList<>();
+                		ArrayList<String> postres = new ArrayList<>();
+                		
+                		primeros.add(partes[1]);
+                		primeros.add(partes[2]);
+                		primeros.add(partes[3]);
+                		
+                		segundos.add(partes[4]);
+                		segundos.add(partes[5]);
+                		segundos.add(partes[6]);
+                		
+                		postres.add(partes[1]);
+                		postres.add(partes[2]);
+                		postres.add(partes[3]);
+                		
+                		Menu menuHoy = new Menu(primeros, segundos, postres, hoy);
+                		
+                		br.close();
+                		fr.close();
+                		return menuHoy;
+                	}
+                }
+            }
+            fr.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return null;
 	}
 
 	@Override
@@ -153,6 +198,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
                 	facturas.add(factura);
                 }
             }
+            br.close();
             fr.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
