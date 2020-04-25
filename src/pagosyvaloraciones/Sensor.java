@@ -4,14 +4,14 @@ public class Sensor implements InterfaceSensores {
 
 	@Override
 	public int devolverIdentificadorVale() {
-		// TODO Auto-generated method stub
-		return 0;
+		int idVale = (int)(Math.random()*10000+1);
+		return idVale;
 	}
 
 	@Override
 	public int devolverIdentificadorBandeja() {
-		// TODO Auto-generated method stub
-		return 0;
+		int idVale = (int)(Math.random()*10000+1);
+		return idVale;
 	}
 
 	@Override

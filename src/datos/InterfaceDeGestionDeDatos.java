@@ -21,4 +21,5 @@ public interface InterfaceDeGestionDeDatos {
 	public Menu consultarMenuHoy();
 	
 	public ArrayList<Factura> consultarFactura();
+	
 }
