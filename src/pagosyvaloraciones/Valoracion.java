@@ -9,15 +9,16 @@ public class Valoracion {
 	int puntuacion;
 	Date fechaAsignacion;
 	Date fechaDevolucion;
-	public void Valoracion(Date fechaAsignacion,Date fechaDevolucion,int idBandeja, String plato, int puntuacion) {
+	
+	public Valoracion(Date fechaAsignacion,Date fechaDevolucion,int idBandeja, String plato, int puntuacion) {
 		this.idBandeja = idBandeja;
 		this.plato = plato;
 		this.puntuacion = puntuacion;
 		this.fechaAsignacion=fechaAsignacion;
 		this.fechaDevolucion=fechaDevolucion;
 		
-		
 	}
+	
 	public int getIdBandeja() {
 		return idBandeja;
 	}

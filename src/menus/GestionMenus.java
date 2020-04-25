@@ -105,4 +105,5 @@ public class GestionMenus implements InterfaceGestionDeMenus{
 		return IntGD.consultarMenusSemana();
 	}
 
+
 }
