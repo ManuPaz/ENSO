@@ -22,7 +22,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 		try {
             String filename = "src\\ficheros\\facturas.txt";
             FileWriter fw = new FileWriter(filename, true); //escribimos al final del archivo
-            fw.write(factura.getIdVale() + "," + factura.getIdBandeja() + "," + factura.getMenuElegido().getPrimero() + "," + factura.getMenuElegido().getSegundo() + "," + factura.getMenuElegido().getPostre() + "," + factura.getMenuElegido().getBebida() + "," + Float.toString(factura.getImporte()));
+            fw.write(factura.getIdVale() + "," + factura.getIdBandeja() + "," + factura.getMenuElegido().getPrimero() + "," + factura.getMenuElegido().getSegundo() + "," + factura.getMenuElegido().getPostre() + "," + factura.getMenuElegido().getBebida() + "," + Float.toString(factura.getImporte()) + "\n");
             fw.close();
         } catch (IOException ioe) {
             System.err.println("IOException: " + ioe.getMessage());
@@ -63,7 +63,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 		try {
             String filename = "src\\ficheros\\valoraciones.txt";
             FileWriter fw = new FileWriter(filename, true); //escribimos al final del archivo
-            fw.write(valoracion.getIdBandeja() + "," + valoracion.getFechaAsignacion().toString() + "," + valoracion.getFechaDevolucion().toString() + "," + valoracion.getPlato() + "," + Integer.toString(valoracion.getPuntuacion()));
+            fw.write(valoracion.getIdBandeja() + "," + valoracion.getFechaAsignacion().toString() + "," + valoracion.getFechaDevolucion().toString() + "," + valoracion.getPlato() + "," + Integer.toString(valoracion.getPuntuacion()) + "\n");
             fw.close();
         } catch (IOException ioe) {
             System.err.println("IOException: " + ioe.getMessage());
@@ -108,7 +108,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 		try {
             String filename = "src\\ficheros\\menus.txt";
             FileWriter fw = new FileWriter(filename, true); //escribimos al final del archivo
-            fw.write(menu.getFecha().toString() + "," + menu.getPrimeros().get(0) + "," + menu.getPrimeros().get(1) + "," + menu.getPrimeros().get(2) + "," + menu.getSegundos().get(0) + "," + menu.getSegundos().get(1) + "," + menu.getSegundos().get(2) + ","+menu.getPostres().get(0) + "," + menu.getPostres().get(1) + "," + menu.getPostres().get(2));
+            fw.write(menu.getFecha().toString() + "," + menu.getPrimeros().get(0) + "," + menu.getPrimeros().get(1) + "," + menu.getPrimeros().get(2) + "," + menu.getSegundos().get(0) + "," + menu.getSegundos().get(1) + "," + menu.getSegundos().get(2) + ","+menu.getPostres().get(0) + "," + menu.getPostres().get(1) + "," + menu.getPostres().get(2) + "\n");
             fw.close();
         } catch (IOException ioe) {
             System.err.println("IOException: " + ioe.getMessage());
