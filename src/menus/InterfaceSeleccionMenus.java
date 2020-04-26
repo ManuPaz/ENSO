@@ -2,13 +2,15 @@ package menus;
 
 import java.util.ArrayList;
 
+import Excepciones.NoHayMenuExcepcion;
+
 public interface InterfaceSeleccionMenus {
 
-	//Seleccionar los platos del men�
+	//Seleccionar los platos del menu
 	public void seleccionarMenu();
 	
-	//Coger todos los platos del men� del d�a
-	public void ofrecerMenu();
+	//Coger todos los platos del menu del dia
+	public void ofrecerMenu()  throws NoHayMenuExcepcion;
 	
 	public ArrayList<String> ofrecerBebidas();
 }

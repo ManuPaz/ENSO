@@ -4,20 +4,28 @@ public class Sensor implements InterfaceSensores {
 
 	@Override
 	public int devolverIdentificadorVale() {
-		// TODO Auto-generated method stub
-		return 0;
+		int idVale = (int)(Math.random()*10000+1);
+		return idVale;
 	}
 
 	@Override
 	public int devolverIdentificadorBandeja() {
-		// TODO Auto-generated method stub
-		return 0;
+		int idVale = (int)(Math.random()*10000+1);
+		return idVale;
 	}
 
 	@Override
 	public void simularTiempo() {
-		// TODO Auto-generated method stub
-		
+		//Crear de forma aleatoria el tiempo que tarda en comer
+		long minutos = (long) (Math.random()*(40 - 10))+10;
+		//Pasar los minutos a segundos
+		long segundos = minutos/10;
+		//Hacer un sleep de los segundos
+		try {
+			Thread.sleep(segundos);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

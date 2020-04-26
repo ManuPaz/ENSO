@@ -1,0 +1,29 @@
+Ensaladilla,primero
+Empanada,primero
+Ensalada mixta,primero
+Pizza,primero
+Croquetas,primero
+Arroz tres delicias,primero
+Lentejas,primero
+Fabada,primero
+Risotto,primero
+Canelones de espinacas,primero
+Filete de ternera con judias y tomates,segundo
+Bacalao con coliflor,segundo
+Lubina a la plancha con patatas,segundo
+Jureles fritos,segundo
+Paella,segundo
+Pollo al limon,segundo
+Chipirones fritos con arroz,segundo
+Merluza al horno,segundo
+Espaghetti carbonara,segundo
+Gambas al ajillo con arroz,segundo
+Macarrones con pesto,segundo
+Macedonia,postre
+Flan,postre
+Fresas con nata,postre
+Natillas,postre
+Yogur de sabores,postre
+Yogur naturales,postre
+Manzana,postre
+Arroz con leche,postre
