@@ -85,6 +85,7 @@ public class GestionMenus implements InterfaceGestionDeMenus{
 		
 		GestionDatos GD = new GestionDatos();
 		InterfaceDeGestionDeDatos IntGD = GD;
+		Date fecha1= new Date();
 		
 		return IntGD.consultarMenuHoy();
 	}
@@ -94,6 +95,7 @@ public class GestionMenus implements InterfaceGestionDeMenus{
 		
 		GestionDatos GD = new GestionDatos();
 		InterfaceDeGestionDeDatos IntGD = GD;
+		
 		
 		return IntGD.consultarMenusSemana();
 	}

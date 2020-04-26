@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import Excepciones.NoHayMenuExcepcion;
+import Excepciones.PlatoIncorrectoExcepcion;
 import pagosyvaloraciones.GestionPagos;
 import pagosyvaloraciones.InterfaceGestionDePagosYCalificaciones;
 
@@ -23,7 +24,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 	}
 
 	@Override
-	public void seleccionarMenu(String primero, String segundo, String bebida, String postre) {
+	public void seleccionarMenu(String primero, String segundo, String bebida, String postre) throws PlatoIncorrectoExcepcion {
 		
 		MenuElegido menuElegido=new MenuElegido();
 		
@@ -41,7 +42,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		
 		for(String plato:menu.getPrimeros()) {
 			if(!plato.equals(primero)) {
-				System.out.println("Primero introducido no válido.");
+				throw new PlatoIncorrectoExcepcion("Primero introducido inválido.");
 			}else {
 				System.out.print("Primero -> "+primero);
 				menuElegido.setPrimero(primero);
@@ -51,7 +52,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		
 		for(String plato:menu.getSegundos()) {
 			if(!plato.equals(segundo)) {
-				System.out.println("Segundo introducido no válido.");
+				throw new PlatoIncorrectoExcepcion("Segundo introducido inválido.");
 			}else {
 				System.out.print("Segundo -> "+segundo);
 				menuElegido.setSegundo(segundo);
@@ -61,7 +62,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 				
 		for(String pos:menu.getPostres()) {
 			if(!pos.equals(primero)) {
-				System.out.println("Postre introducido no válido.");
+				throw new PlatoIncorrectoExcepcion("Postre introducido inválido.");
 			}else {
 				System.out.print("Postre -> "+postre);
 				menuElegido.setPostre(postre);
@@ -71,7 +72,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		
 		for(String beb:bebidas) {
 			if(!beb.equals(bebida)) {
-				System.out.println("Bebida introducida no válida.");
+				throw new PlatoIncorrectoExcepcion("Bebida introducida inválida.");
 			}else {
 				System.out.print("Bebida -> "+bebida);
 				menuElegido.setBebida(bebida);
