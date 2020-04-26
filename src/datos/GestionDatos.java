@@ -22,7 +22,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 		try {
             String filename = "src\\ficheros\\facturas.txt";
             FileWriter fw = new FileWriter(filename, true); //escribimos al final del archivo
-            fw.write(factura.getIdVale() + "," + factura.getIdBandeja() + "," + factura.getMenuElegido().getPrimero() + "," + factura.getMenuElegido().getSegundo() + "," + factura.getMenuElegido().getPostre() + "," + factura.getMenuElegido().getBebida() + "," + Float.toString(factura.getImporte()));
+            fw.write(factura.getIdVale() + "," + factura.getIdBandeja() + "," + factura.getMenuElegido().getPrimero() + "," + factura.getMenuElegido().getSegundo() + "," + factura.getMenuElegido().getPostre() + "," + factura.getMenuElegido().getBebida() + "," + Float.toString(factura.getImporte()) + "\n");
             fw.close();
         } catch (IOException ioe) {
             System.err.println("IOException: " + ioe.getMessage());
@@ -63,7 +63,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 		try {
             String filename = "src\\ficheros\\valoraciones.txt";
             FileWriter fw = new FileWriter(filename, true); //escribimos al final del archivo
-            fw.write(valoracion.getIdBandeja() + "," + valoracion.getFechaAsignacion().toString() + "," + valoracion.getFechaDevolucion().toString() + "," + valoracion.getPlato() + "," + Integer.toString(valoracion.getPuntuacion()));
+            fw.write(valoracion.getIdBandeja() + "," + valoracion.getFechaAsignacion().toString() + "," + valoracion.getFechaDevolucion().toString() + "," + valoracion.getPlato() + "," + Integer.toString(valoracion.getPuntuacion()) + "\n");
             fw.close();
         } catch (IOException ioe) {
             System.err.println("IOException: " + ioe.getMessage());
@@ -108,7 +108,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 		try {
             String filename = "src\\ficheros\\menus.txt";
             FileWriter fw = new FileWriter(filename, true); //escribimos al final del archivo
-            fw.write(menu.getFecha().toString() + "," + menu.getPrimeros().get(0) + "," + menu.getPrimeros().get(1) + "," + menu.getPrimeros().get(2) + "," + menu.getSegundos().get(0) + "," + menu.getSegundos().get(1) + "," + menu.getSegundos().get(2) + ","+menu.getPostres().get(0) + "," + menu.getPostres().get(1) + "," + menu.getPostres().get(2));
+            fw.write(menu.getFecha().toString() + "," + menu.getPrimeros().get(0) + "," + menu.getPrimeros().get(1) + "," + menu.getPrimeros().get(2) + "," + menu.getSegundos().get(0) + "," + menu.getSegundos().get(1) + "," + menu.getSegundos().get(2) + ","+menu.getPostres().get(0) + "," + menu.getPostres().get(1) + "," + menu.getPostres().get(2) + "\n");
             fw.close();
         } catch (IOException ioe) {
             System.err.println("IOException: " + ioe.getMessage());
@@ -117,8 +117,84 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 
 	@Override
 	public ArrayList<Menu> consultarMenusSemana() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ArrayList<Menu> menusSemana = new ArrayList<>();
+		boolean encontradoHoy = false;
+		
+		Date hoy = new Date();
+		String[] hoyFormateado = hoy.toString().split(" ");
+		
+		String linea;
+        String[] partes;
+
+        try {
+            FileReader fr = new FileReader("src\\ficheros\\menus.txt");
+            BufferedReader br = new BufferedReader(fr);
+
+            while ((linea = br.readLine()) != null && menusSemana.size()!=5) {
+    
+                partes = linea.split(",");
+                if(partes.length==10) {
+                	String fechaMenu = partes[0];
+                	System.out.println(fechaMenu);
+                	if(fechaMenu.split(" ")[2].equals(hoyFormateado[2])&&fechaMenu.split(" ")[1].equals(hoyFormateado[1])&&fechaMenu.split(" ")[5].equals(hoyFormateado[5])) {
+                		ArrayList<String> primeros = new ArrayList<>();
+                		ArrayList<String> segundos = new ArrayList<>();
+                		ArrayList<String> postres = new ArrayList<>();
+                		
+                		primeros.add(partes[1]);
+                		primeros.add(partes[2]);
+                		primeros.add(partes[3]);
+                		
+                		segundos.add(partes[4]);
+                		segundos.add(partes[5]);
+                		segundos.add(partes[6]);
+                		
+                		postres.add(partes[7]);
+                		postres.add(partes[8]);
+                		postres.add(partes[9]);
+                		
+                		Menu menu = new Menu(primeros, segundos, postres, hoy);
+                		
+                		menusSemana.add(menu);
+                		encontradoHoy = true;
+                		
+                	}else if(encontradoHoy) {
+                		
+                		ArrayList<String> primeros = new ArrayList<>();
+                		ArrayList<String> segundos = new ArrayList<>();
+                		ArrayList<String> postres = new ArrayList<>();
+                		
+                		primeros.add(partes[1]);
+                		primeros.add(partes[2]);
+                		primeros.add(partes[3]);
+                		
+                		segundos.add(partes[4]);
+                		segundos.add(partes[5]);
+                		segundos.add(partes[6]);
+                		
+                		postres.add(partes[7]);
+                		postres.add(partes[8]);
+                		postres.add(partes[9]);
+                		
+                		Menu menu = new Menu(primeros, segundos, postres, hoy);
+                		
+                		menusSemana.add(menu);
+                	}
+                }
+            }
+            
+            br.close();
+            fr.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        if(menusSemana.size()>0) {
+        	return menusSemana;
+        }else {
+        	return null;
+        }
 	}
 
 	@Override
