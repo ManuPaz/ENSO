@@ -17,7 +17,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		bebidas.add("Agua");
 		bebidas.add("CocaCola");
 		bebidas.add("Nestea");
-		bebidas.add("Fanta lim�n");
+		bebidas.add("Fanta limon");
 		bebidas.add("Fanta naranja");
 		bebidas.add("Agua con gas");
 	}
@@ -80,18 +80,18 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 			 throw new NoHayMenuExcepcion();
 			
 		}
-		System.out.println("Primeros del día:");
+		System.out.println("Primeros del dia:");
 		for(String primero:menu.getPrimeros()) {
 			System.out.println("-"+primero);
 		}
 		
-		System.out.println("Segundos del día:");
+		System.out.println("Segundos del dia:");
 		
 		for(String segundo:menu.getSegundos()) {
 			System.out.println("-"+segundo);
 		}
 		
-		System.out.println("Postres del día:");
+		System.out.println("Postres del dia:");
 		
 		for(String postre:menu.getPostres()) {
 			System.out.println("-"+postre);
