@@ -1,7 +1,7 @@
 package pagosyvaloraciones;
 
 public class Sensor implements InterfaceSensores {
-
+	private int idBandeja;
 	@Override
 	public int devolverIdentificadorVale() {
 		int idVale = (int)(Math.random()*10000+1);
@@ -11,11 +11,12 @@ public class Sensor implements InterfaceSensores {
 	@Override
 	public int devolverIdentificadorBandeja() {
 		int idVale = (int)(Math.random()*10000+1);
+		this.idBandeja=idVale;
 		return idVale;
 	}
 
 	@Override
-	public void simularTiempo() {
+	public int simularTiempo() {
 		//Crear de forma aleatoria el tiempo que tarda en comer
 		long minutos = (long) (Math.random()*(40 - 10))+10;
 		//Pasar los minutos a segundos
@@ -26,6 +27,7 @@ public class Sensor implements InterfaceSensores {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		return this.idBandeja;
 	}
 
 }
