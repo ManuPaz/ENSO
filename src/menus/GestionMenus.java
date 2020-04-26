@@ -74,7 +74,6 @@ public class GestionMenus implements InterfaceGestionDeMenus{
 
 		GestionDatos GD = new GestionDatos();
 		InterfaceDeGestionDeDatos IntGD = GD;
-		Menu menuDelDia = new Menu();
 		
 		ArrayList<Plato> platosDisponibles=IntGD.consultarPlatos();
 		
