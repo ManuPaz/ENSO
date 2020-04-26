@@ -7,7 +7,7 @@ import Excepciones.NoHayMenuExcepcion;
 public interface InterfaceSeleccionMenus {
 
 	//Seleccionar los platos del menu
-	public void seleccionarMenu();
+	public void seleccionarMenu(String primero, String segundo, String bebida, String postre);
 	
 	//Coger todos los platos del menu del dia
 	public void ofrecerMenu()  throws NoHayMenuExcepcion;

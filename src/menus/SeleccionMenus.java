@@ -23,45 +23,61 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 	}
 
 	@Override
-	public void seleccionarMenu() {
+	public void seleccionarMenu(String primero, String segundo, String bebida, String postre) {
+		
+		MenuElegido menuElegido=new MenuElegido();
 		
 		GestionPagos GP = new GestionPagos();
 		InterfaceGestionDePagosYCalificaciones IntGP = GP;
-		MenuElegido menuElegido=new MenuElegido();
-		String primero, segundo, postre, bebida;
 		
-		System.out.println("SELECCIONE SU MENÚ:");
-		this.ofrecerMenu();
+		GestionMenus GM = new GestionMenus();
+		InterfaceGestionDeMenus IntGM = GM;
+		Date fechaActual=new Date();
+		
+		Menu menu=IntGM.obtenerMenuDia(fechaActual);
+		
+		System.out.println("MENÚ SELECCIONADO:");
 		System.out.println("--------------------------------------------");
 		
-		System.out.print("Primero -> ");
-		Scanner teclado = new Scanner(System.in);
-		primero = teclado.nextLine();
-		teclado.close();
+		for(String plato:menu.getPrimeros()) {
+			if(!plato.equals(primero)) {
+				System.out.println("Primero introducido no válido.");
+			}else {
+				System.out.print("Primero -> "+primero);
+				menuElegido.setPrimero(primero);
+				break;
+			}
+		}
 		
-		System.out.print("Segundo -> ");
-		teclado = new Scanner(System.in);
-		segundo = teclado.nextLine();
-		teclado.close();
+		for(String plato:menu.getSegundos()) {
+			if(!plato.equals(segundo)) {
+				System.out.println("Segundo introducido no válido.");
+			}else {
+				System.out.print("Segundo -> "+segundo);
+				menuElegido.setSegundo(segundo);
+				break;
+			}
+		}
+				
+		for(String pos:menu.getPostres()) {
+			if(!pos.equals(primero)) {
+				System.out.println("Postre introducido no válido.");
+			}else {
+				System.out.print("Postre -> "+postre);
+				menuElegido.setPostre(postre);
+				break;
+			}
+		}
 		
-		System.out.print("Postre -> ");
-		teclado = new Scanner(System.in);
-		postre = teclado.nextLine();
-		teclado.close();
-		
-		System.out.println("SELECCIONE SU BEBIDA:");
-		this.ofrecerBebidas();
-		
-		System.out.print("Bebida -> ");
-		teclado = new Scanner(System.in);
-		bebida = teclado.nextLine();
-		teclado.close();
-		
-		//Creamos el menuElegido para pasarselo al sistema de gestion de pagos
-		menuElegido.setPrimero(primero);
-		menuElegido.setSegundo(segundo);
-		menuElegido.setPostre(postre);
-		menuElegido.setBebida(bebida);
+		for(String beb:bebidas) {
+			if(!beb.equals(bebida)) {
+				System.out.println("Bebida introducida no válida.");
+			}else {
+				System.out.print("Bebida -> "+bebida);
+				menuElegido.setBebida(bebida);
+				break;
+			}
+		}
 		
 		IntGP.nuevoMenuPedido(menuElegido);
 		
