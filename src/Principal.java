@@ -41,10 +41,7 @@ public class Principal {
 		System.out.println(iAE.platoMenosValorado());
 		System.out.println(iAE.tiempoMedioDuracion());
 		System.out.println(iAE.rankingValoracion());
-		MenuElegido menu=new MenuElegido("Croquetas","Paella","Flan","Agua");
-		gP.nuevoMenuPedido(menu);
-		s.simularTiempo();
-		gP.bandejaDevuelta(new Date());
+	
 		
 		
 			
