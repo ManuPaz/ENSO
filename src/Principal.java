@@ -12,23 +12,12 @@ public class Principal {
 
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
-		String t=new Date().toString();
-		System.out.println(t);
-		DateFormat formatoHora = new SimpleDateFormat("hh:mm:ss");
-		try {
-			Date horaAsignacion = formatoHora.parse(t.split(" ")[3]);
-			String a=horaAsignacion.toString();
-			System.out.println(a);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 		GestionMenus gM = new GestionMenus();
 		InterfaceGestionDeMenus iGM = gM;
 		
-		SeleccionMenus sM = new SeleccionMenus();
-		InterfaceSeleccionMenus iSM = sM;
+	
 		
 		AnalisisYEstadisticas ae = new AnalisisYEstadisticas();
 		InterfaceAnalisisYEstadisticas iAE = ae;
@@ -42,17 +31,7 @@ public class Principal {
 		GestionPagos gP = new GestionPagos();
 		InterfaceGestionDePagosYCalificaciones iGPC = gP;
 
-		//Interfaz Seleccion Menus	
-		try {
-			iSM.ofrecerMenu();
-			
-			} catch (NoHayMenuExcepcion e) {
-				System.out.println(e.getMessage());
-			}
-		//iSM.ofrecerBebidas();
-		//iSM.seleccionarMenu();
 		
-		//Interfaz Gestion Menu
 		ArrayList<String> primero = new ArrayList<>();
 		primero.add("Ensaladilla");
 		primero.add("Croquetas");
@@ -76,10 +55,10 @@ public class Principal {
 			e.printStackTrace();
 		}
 		iGM.obtenerMenuDia(fecha);
-		iGM.obtenerPlatosDisponibles("primero");
+		
 		iGM.consultarMenusSemana();
 		
-		//Interfaz de Análisis y Estadísticas
+	/*
 		iAE.horaMasFrecuente();
 		iAE.ocupacionComedor();
 		iAE.platoMasPedido();
@@ -112,7 +91,7 @@ public class Principal {
 		//Interfaz de Gestion de Pagos y Calificaciones
 		//iGPC.bandejaDevuelta(hora, identificadorBandeja);
 		iGPC.nuevoMenuPedido(menuElegido);
-		//iGPC.valoracion(valoracion, plato);
+		//iGPC.valoracion(valoracion, plato);*/
 			
 			
 		}

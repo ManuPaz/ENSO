@@ -136,7 +136,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
                 partes = linea.split(",");
                 if(partes.length==10) {
                 	String fechaMenu = partes[0];
-                	System.out.println(fechaMenu);
+                
                 	if(fechaMenu.split(" ")[2].equals(hoyFormateado[2])&&fechaMenu.split(" ")[1].equals(hoyFormateado[1])&&fechaMenu.split(" ")[5].equals(hoyFormateado[5])) {
                 		ArrayList<String> primeros = new ArrayList<>();
                 		ArrayList<String> segundos = new ArrayList<>();
