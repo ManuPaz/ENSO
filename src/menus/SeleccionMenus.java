@@ -13,7 +13,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 
 	private ArrayList<String> bebidas;
 	
-	public void SeleccionMenus() {
+	public  SeleccionMenus() {
 		bebidas = new ArrayList<>();
 		bebidas.add("Agua");
 		bebidas.add("CocaCola");
