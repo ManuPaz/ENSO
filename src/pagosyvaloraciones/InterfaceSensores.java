@@ -6,5 +6,5 @@ public interface InterfaceSensores {
 	
 	public int devolverIdentificadorBandeja();
 	
-	public int simularTiempo();
+	public void simularTiempo();
 }

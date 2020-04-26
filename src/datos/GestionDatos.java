@@ -74,7 +74,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 	public ArrayList<Valoracion> consultarValoraciones() {
 		
 		ArrayList<Valoracion> valoraciones = new ArrayList<>();
-		DateFormat formatoHora = new SimpleDateFormat(":dd hh:mm:ss");
+		DateFormat formatoHora = new SimpleDateFormat("hh:mm:ss");
 		
 		String linea;
         String[] partes;
@@ -87,8 +87,8 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
                 partes = linea.split(",");
                 if(partes.length==5) {
                 	int idBandeja = Integer.parseInt(partes[0]);
-                	Date horaAsignacion = formatoHora.parse(partes[1]);
-                	Date horaDevolucion = formatoHora.parse(partes[2]);
+                	Date horaAsignacion = formatoHora.parse(partes[1].split(" ")[3]);
+                	Date horaDevolucion = formatoHora.parse(partes[2].split(" ")[3]);
                 	String plato = partes[3];
                 	int puntuacion = Integer.parseInt(partes[4]);
                 	Valoracion valoracion = new Valoracion(horaAsignacion,horaDevolucion,idBandeja,plato,puntuacion);

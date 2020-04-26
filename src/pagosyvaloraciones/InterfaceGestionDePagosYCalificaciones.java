@@ -9,7 +9,7 @@ public interface InterfaceGestionDePagosYCalificaciones {
 	public void nuevoMenuPedido(MenuElegido menuElegido);
 	
 	//Escribir la devolución de la bandeja
-	public void bandejaDevuelta(Date hora, int identificadorBandeja);
+	public void bandejaDevuelta(Date hora);
 	
 	//Escribe en un archivo
 	public void valoracion(int valoracion, String plato);

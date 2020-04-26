@@ -28,7 +28,7 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 	}
 
 	@Override
-	public void bandejaDevuelta(Date hora, int identificadorBandeja) {
+	public void bandejaDevuelta(Date hora) {
 		// TODO Auto-generated method stub
 		
 		this.horaDevolucion=new Date();
@@ -60,9 +60,9 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 			}
 			if(!aux&&i<3) {
 				System.out.println("Quieres valorar mas platos ? Introduce Si/No");
-				nombre=scanner.nextLine();
+				nombre=scanner.nextLine().toString();
 				if(nombre.equals("Si"))
-					aux=false;
+					aux=true;
 				
 			}
 			}
@@ -77,7 +77,7 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 	@Override
 	public void valoracion(int valoracion, String plato) {
 		// TODO Auto-generated method stub
-		Valoracion valo=new Valoracion(this.horaAsignacion,this.horaDevolucion,identificadorBandeja,plato,valoracion);
+		Valoracion valo=new Valoracion(this.horaAsignacion,this.horaDevolucion,this.identificadorBandeja,plato,valoracion);
 		InterfaceDeGestionDeDatos GD = new GestionDatos();
 		GD.insertarValoracion(valo);
 	}

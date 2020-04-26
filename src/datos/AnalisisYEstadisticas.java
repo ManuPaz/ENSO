@@ -27,18 +27,21 @@ public class AnalisisYEstadisticas implements InterfaceAnalisisYEstadisticas {
 		for(Plato plato:platos) {
 			i=0;
 			for(Factura fact:facturas){
-				if(fact.getMenuElegido().getPrimero().equals(plato)||fact.getMenuElegido().getSegundo().equals(plato)||fact.getMenuElegido().getPostre().equals(plato)) {
+				
+				if(fact.getMenuElegido().getPrimero().equals(plato.getNombre())||fact.getMenuElegido().getSegundo().equals(plato.getNombre())||fact.getMenuElegido().getPostre().equals(plato.getNombre())) {
 					i++;
+					
 				}
-				if (i > maximo) {
-					maximo = i;
-					platosRet.removeAll(platosRet);
-					platosRet.add(plato.getNombre());
-				} else if (i == maximo)
-					platosRet.add(plato.getNombre());
 				
 				
 			}
+			if (i > maximo) {
+				maximo = i;
+				platosRet.removeAll(platosRet);
+				platosRet.add(plato.getNombre());
+			} else if (i == maximo)
+				platosRet.add(plato.getNombre());
+			
 			
 		}
 		return platosRet;
@@ -56,18 +59,19 @@ public class AnalisisYEstadisticas implements InterfaceAnalisisYEstadisticas {
 		for(Plato plato:platos) {
 			i=0;
 			for(Valoracion fact:valoracions){
-				if(fact.getPlato().equals(plato)) {
+				if(fact.getPlato().equals(plato.getNombre())) {
 					i+=fact.getPuntuacion();
 				}
-				if (i >maximo) {
-					maximo= i;
-					platosRet.removeAll(platosRet);
-					platosRet.add(plato.getNombre());
-				} else if (i == maximo)
-					platosRet.add(plato.getNombre());
+				
 				
 				
 			}
+			if (i >maximo) {
+				maximo= i;
+				platosRet.removeAll(platosRet);
+				platosRet.add(plato.getNombre());
+			} else if (i == maximo)
+				platosRet.add(plato.getNombre());
 			
 		}
 		return platosRet;
@@ -85,18 +89,19 @@ public class AnalisisYEstadisticas implements InterfaceAnalisisYEstadisticas {
 		for(Plato plato:platos) {
 			i=0;
 			for(Factura fact:facturas){
-				if(fact.getMenuElegido().getPrimero().equals(plato)||fact.getMenuElegido().getSegundo().equals(plato)||fact.getMenuElegido().getPostre().equals(plato)) {
+				if(fact.getMenuElegido().getPrimero().equals(plato.getNombre())||fact.getMenuElegido().getSegundo().equals(plato.getNombre())||fact.getMenuElegido().getPostre().equals(plato.getNombre())) {
 					i++;
 				}
-				if (i < minimo) {
-					minimo = i;
-					platosRet.removeAll(platosRet);
-					platosRet.add(plato.getNombre());
-				} else if (i == minimo)
-					platosRet.add(plato.getNombre());
 				
 				
 			}
+			if (i < minimo) {
+				minimo = i;
+				platosRet.removeAll(platosRet);
+				platosRet.add(plato.getNombre());
+			} else if (i == minimo)
+				platosRet.add(plato.getNombre());
+			
 			
 		}
 		return platosRet;
@@ -114,18 +119,19 @@ public class AnalisisYEstadisticas implements InterfaceAnalisisYEstadisticas {
 		for(Plato plato:platos) {
 			i=0;
 			for(Valoracion fact:valoracions){
-				if(fact.getPlato().equals(plato)) {
+				if(fact.getPlato().equals(plato.getNombre())) {
 					i+=fact.getPuntuacion();
 				}
-				if (i < minimo) {
-					minimo = i;
-					platosRet.removeAll(platosRet);
-					platosRet.add(plato.getNombre());
-				} else if (i == minimo)
-					platosRet.add(plato.getNombre());
 				
 				
 			}
+			if (i < minimo) {
+				minimo = i;
+				platosRet.removeAll(platosRet);
+				platosRet.add(plato.getNombre());
+			} else if (i == minimo)
+				platosRet.add(plato.getNombre());
+			
 			
 		}
 		return platosRet;
@@ -149,10 +155,11 @@ public class AnalisisYEstadisticas implements InterfaceAnalisisYEstadisticas {
 					break;
 
 				}
-				if (!aux)
-					i += 1;
+				
 
 			}
+			if (!aux)
+				i += 1;
 		}
 		return i;
 	}
@@ -166,6 +173,7 @@ public class AnalisisYEstadisticas implements InterfaceAnalisisYEstadisticas {
 		int maximo = 0;
 		int aux = 0;
 		for (int i = 0; i < 24; i++) {
+			aux=0;
 			for (Valoracion val : valoraciones) {
 				if (val.getFechaAsignacion().getHours() == i)
 					aux += 1;
@@ -197,11 +205,15 @@ public class AnalisisYEstadisticas implements InterfaceAnalisisYEstadisticas {
 				identificadores.add(val.getIdBandeja());
 				suma += val.getFechaDevolucion().getTime() - val.getFechaAsignacion().getTime();
 				i++;
+				
 
 			}
-			suma = suma / i;
+			
 
 		}
+		float a=(float)suma/(float)(1000*i);
+		
+		suma = (int)a;
 
 		return suma;
 	}
@@ -224,7 +236,9 @@ public class AnalisisYEstadisticas implements InterfaceAnalisisYEstadisticas {
 				}
 
 			}
-			v = v / i;
+			if(i>0)
+			v= v / (float)i;
+			
 			if (plats.size() < 10)
 				plats.put(plato, v);
 			else {
@@ -236,6 +250,7 @@ public class AnalisisYEstadisticas implements InterfaceAnalisisYEstadisticas {
 
 				}
 				if (min < v) {
+					
 					Collection<Plato> p = plats.keySet();
 					for (Plato p1 : p) {
 						if (plats.get(p1) == min) {

@@ -2,6 +2,11 @@ package menus;
 
 public class Plato {
 
+	@Override
+	public String toString() {
+		return "Plato [nombre=" + nombre + "]";
+	}
+
 	String nombre;
 	String tipo; //primero,segundo,postre
 	
