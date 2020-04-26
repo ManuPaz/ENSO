@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+import Excepciones.NoHayMenuExcepcion;
 import pagosyvaloraciones.GestionPagos;
 import pagosyvaloraciones.InterfaceGestionDePagosYCalificaciones;
 
@@ -67,15 +68,19 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 	}
 
 	@Override
-	public void ofrecerMenu() {
+	public void ofrecerMenu() throws NoHayMenuExcepcion {
 		GestionMenus GM = new GestionMenus();
 		InterfaceGestionDeMenus IntGM = GM;
 		Date fechaActual=new Date();
 		
 		Menu menu=IntGM.obtenerMenuDia(fechaActual);
 		
-		System.out.println("Primeros del día:");
 		
+		if(menu==null) {
+			 throw new NoHayMenuExcepcion();
+			
+		}
+		System.out.println("Primeros del día:");
 		for(String primero:menu.getPrimeros()) {
 			System.out.println("-"+primero);
 		}

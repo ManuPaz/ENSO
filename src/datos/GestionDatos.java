@@ -20,7 +20,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 	@Override
 	public void insertarFactura(Factura factura) {
 		try {
-            String filename = "ficheros\\facturas.txt";
+            String filename = "src\\ficheros\\facturas.txt";
             FileWriter fw = new FileWriter(filename, true); //escribimos al final del archivo
             fw.write(factura.getIdVale() + "," + factura.getIdBandeja() + "," + factura.getMenuElegido().getPrimero() + "," + factura.getMenuElegido().getSegundo() + "," + factura.getMenuElegido().getPostre() + "," + factura.getMenuElegido().getBebida() + "," + Float.toString(factura.getImporte()));
             fw.close();
@@ -38,7 +38,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
         String[] partes;
 
         try {
-            FileReader fr = new FileReader("ficheros\\platos.txt");
+            FileReader fr = new FileReader("src\\ficheros\\platos.txt");
             BufferedReader br = new BufferedReader(fr);
 
             while ((linea = br.readLine()) != null) {
@@ -61,7 +61,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 	@Override
 	public void insertarValoracion(Valoracion valoracion) {
 		try {
-            String filename = "ficheros\\valoraciones.txt";
+            String filename = "src\\ficheros\\valoraciones.txt";
             FileWriter fw = new FileWriter(filename, true); //escribimos al final del archivo
             fw.write(valoracion.getIdBandeja() + "," + valoracion.getFechaAsignacion().toString() + "," + valoracion.getFechaDevolucion().toString() + "," + valoracion.getPlato() + "," + Integer.toString(valoracion.getPuntuacion()));
             fw.close();
@@ -74,13 +74,13 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 	public ArrayList<Valoracion> consultarValoraciones() {
 		
 		ArrayList<Valoracion> valoraciones = new ArrayList<>();
-		DateFormat formatoHora = new SimpleDateFormat("hh:mm");
+		DateFormat formatoHora = new SimpleDateFormat(":dd hh:mm:ss");
 		
 		String linea;
         String[] partes;
 
         try {
-            FileReader fr = new FileReader("ficheros\\valoraciones.txt");
+            FileReader fr = new FileReader("src\\ficheros\\valoraciones.txt");
             BufferedReader br = new BufferedReader(fr);
 
             while ((linea = br.readLine()) != null) {
@@ -106,9 +106,9 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 	@Override
 	public void insertarMenu(Menu menu) {
 		try {
-            String filename = "ficheros\\menus.txt";
+            String filename = "src\\ficheros\\menus.txt";
             FileWriter fw = new FileWriter(filename, true); //escribimos al final del archivo
-            fw.write(menu.getFecha().toString() + "," + menu.getPrimeros().get(0) + "," + menu.getPrimeros().get(1) + "," + menu.getPrimeros().get(2) + "," + menu.getSegundos().get(0) + "," + menu.getSegundos().get(1) + "," + menu.getSegundos().get(2) + menu.getPostres().get(0) + "," + menu.getPostres().get(1) + "," + menu.getPostres().get(2));
+            fw.write(menu.getFecha().toString() + "," + menu.getPrimeros().get(0) + "," + menu.getPrimeros().get(1) + "," + menu.getPrimeros().get(2) + "," + menu.getSegundos().get(0) + "," + menu.getSegundos().get(1) + "," + menu.getSegundos().get(2) + ","+menu.getPostres().get(0) + "," + menu.getPostres().get(1) + "," + menu.getPostres().get(2));
             fw.close();
         } catch (IOException ioe) {
             System.err.println("IOException: " + ioe.getMessage());
@@ -125,20 +125,22 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 	public Menu consultarMenuHoy() {
 		
 		Date hoy = new Date();
-		String hoyFormateado = new SimpleDateFormat("dd-MM-yyyy").format(hoy);
+		String[] hoyFormateado = hoy.toString().split(" ");
 		
 		String linea;
         String[] partes;
 
         try {
-            FileReader fr = new FileReader("ficheros\\menus.txt");
+            FileReader fr = new FileReader("src\\ficheros\\menus.txt");
             BufferedReader br = new BufferedReader(fr);
 
             while ((linea = br.readLine()) != null) {
+    
                 partes = linea.split(",");
                 if(partes.length==10) {
                 	String fechaMenu = partes[0];
-                	if(fechaMenu.equals(hoyFormateado)) {
+                	System.out.println(fechaMenu);
+                	if(fechaMenu.split(" ")[2].equals(hoyFormateado[2])&&fechaMenu.split(" ")[1].equals(hoyFormateado[1])&&fechaMenu.split(" ")[5].equals(hoyFormateado[5])) {
                 		ArrayList<String> primeros = new ArrayList<>();
                 		ArrayList<String> segundos = new ArrayList<>();
                 		ArrayList<String> postres = new ArrayList<>();
@@ -151,9 +153,9 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
                 		segundos.add(partes[5]);
                 		segundos.add(partes[6]);
                 		
-                		postres.add(partes[1]);
-                		postres.add(partes[2]);
-                		postres.add(partes[3]);
+                		postres.add(partes[7]);
+                		postres.add(partes[8]);
+                		postres.add(partes[9]);
                 		
                 		Menu menuHoy = new Menu(primeros, segundos, postres, hoy);
                 		
@@ -180,7 +182,7 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
         String[] partes;
 
         try {
-            FileReader fr = new FileReader("ficheros\\facturas.txt");
+            FileReader fr = new FileReader("src\\ficheros\\facturas.txt");
             BufferedReader br = new BufferedReader(fr);
 
             while ((linea = br.readLine()) != null) {
