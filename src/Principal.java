@@ -55,7 +55,6 @@ public class Principal {
 			
 			System.out.println("\n>Insertar valoraciones");
 			Date ahora = new Date();
-			s.simularTiempo();
 			Date despues = new Date();
 			Valoracion valoracion = new  Valoracion(ahora,despues,123, "Flan", 5);
 			gD.insertarValoracion(valoracion);
