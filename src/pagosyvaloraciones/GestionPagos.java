@@ -14,12 +14,16 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 	private Date horaAsignacion;
 	private MenuElegido menuElegido;
 	private Date horaDevolucion;
-
+	private InterfaceSensores IS;
+	public GestionPagos(InterfaceSensores IS) {
+		this.IS=IS;
+		
+	}
 	@Override
 	public void nuevoMenuPedido(MenuElegido menuElegido) {
-		InterfaceSensores sensor = new Sensor();
-		this.identificadorBandeja = sensor.devolverIdentificadorBandeja();
-		Factura factura = new Factura(6, this.identificadorBandeja, sensor.devolverIdentificadorVale(), menuElegido);
+		
+		this.identificadorBandeja = this.IS.devolverIdentificadorBandeja();
+		Factura factura = new Factura(6, this.identificadorBandeja, this.IS.devolverIdentificadorVale(), menuElegido);
 		this.horaAsignacion = new Date();
 		this.menuElegido = menuElegido;
 		InterfaceDeGestionDeDatos GD = new GestionDatos();
@@ -28,10 +32,10 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 	}
 
 	@Override
-	public void bandejaDevuelta(Date hora) {
+	public void bandejaDevuelta(Date hora,int IdentificadorBandeja) {
 		// TODO Auto-generated method stub
-		
-		this.horaDevolucion=new Date();
+		if(this.menuElegido!=null) {
+		this.horaDevolucion=hora;
 		Scanner scanner=new Scanner(System.in);
 		boolean aux=true;
 		int i=0;
@@ -52,7 +56,7 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 			
 			};
 			if(!aux) {
-				this.valoracion(val, nombre);
+				this.valoracion(val, nombre,IdentificadorBandeja);
 				
 				
 				
@@ -66,7 +70,9 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 				
 			}
 			}
-				
+		}	else {
+			System.out.println("No se esta realizando la valoracion para ningun menu pagado");
+		}
 		
 				
 		
@@ -75,11 +81,17 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 	}
 
 	@Override
-	public void valoracion(int valoracion, String plato) {
+	public void valoracion(int valoracion, String plato,int identificadorBandeja) {
 		// TODO Auto-generated method stub
-		Valoracion valo=new Valoracion(this.horaAsignacion,this.horaDevolucion,this.identificadorBandeja,plato,valoracion);
+		if(this.menuElegido!=null) {
+		Valoracion valo=new Valoracion(this.horaAsignacion,this.horaDevolucion,identificadorBandeja,plato,valoracion);
 		InterfaceDeGestionDeDatos GD = new GestionDatos();
 		GD.insertarValoracion(valo);
+	}
+		
+	else {
+		System.out.println("No se esta realizando la valoracion para ningun menu pagado");
+	}
 	}
 
 }

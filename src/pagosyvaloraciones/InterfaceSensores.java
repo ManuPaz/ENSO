@@ -6,5 +6,5 @@ public interface InterfaceSensores {
 	
 	public int devolverIdentificadorBandeja();
 	
-	public void simularTiempo();
+	public void simularTiempoYDevolverBandeja(InterfaceGestionDePagosYCalificaciones GP);
 }

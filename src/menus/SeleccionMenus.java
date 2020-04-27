@@ -12,8 +12,9 @@ import pagosyvaloraciones.InterfaceGestionDePagosYCalificaciones;
 public class SeleccionMenus implements InterfaceSeleccionMenus{
 
 	private ArrayList<String> bebidas;
+	private InterfaceGestionDePagosYCalificaciones gp;
 	
-	public  SeleccionMenus() {
+	public  SeleccionMenus(InterfaceGestionDePagosYCalificaciones gp) {
 		bebidas = new ArrayList<>();
 		bebidas.add("Agua");
 		bebidas.add("CocaCola");
@@ -21,6 +22,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		bebidas.add("Fanta limon");
 		bebidas.add("Fanta naranja");
 		bebidas.add("Agua con gas");
+		this.gp=gp;
 	}
 
 	@Override
@@ -28,8 +30,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		
 		MenuElegido menuElegido=new MenuElegido();
 		
-		GestionPagos GP = new GestionPagos();
-		InterfaceGestionDePagosYCalificaciones IntGP = GP;
+		
 		
 		GestionMenus GM = new GestionMenus();
 		InterfaceGestionDeMenus IntGM = GM;
@@ -39,49 +40,47 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		
 		System.out.println("MENÚ SELECCIONADO:");
 		System.out.println("--------------------------------------------");
+		if(menu!=null) {
 		
-		for(String plato:menu.getPrimeros()) {
-			if(!plato.equals(primero)) {
+			if(!menu.getPrimeros().contains(primero)) {
 				throw new PlatoIncorrectoExcepcion("Primero introducido inválido.");
 			}else {
-				System.out.print("Primero -> "+primero);
+				System.out.println("Primero -> "+primero);
 				menuElegido.setPrimero(primero);
-				break;
+				
 			}
-		}
 		
-		for(String plato:menu.getSegundos()) {
-			if(!plato.equals(segundo)) {
+		
+		
+			if(!menu.getSegundos().contains(segundo)) {
 				throw new PlatoIncorrectoExcepcion("Segundo introducido inválido.");
 			}else {
-				System.out.print("Segundo -> "+segundo);
+				System.out.println("Segundo -> "+segundo);
 				menuElegido.setSegundo(segundo);
-				break;
-			}
-		}
 				
-		for(String pos:menu.getPostres()) {
-			if(!pos.equals(primero)) {
+			}
+		
+			if(!menu.getPostres().contains(postre)) {
 				throw new PlatoIncorrectoExcepcion("Postre introducido inválido.");
 			}else {
-				System.out.print("Postre -> "+postre);
+				System.out.println("Postre -> "+postre);
 				menuElegido.setPostre(postre);
-				break;
+				
 			}
-		}
 		
-		for(String beb:bebidas) {
-			if(!beb.equals(bebida)) {
+		
+		
+			if(!this.bebidas.contains(bebida)) {
 				throw new PlatoIncorrectoExcepcion("Bebida introducida inválida.");
 			}else {
-				System.out.print("Bebida -> "+bebida);
+				System.out.println("Bebida -> "+bebida);
 				menuElegido.setBebida(bebida);
-				break;
+				
 			}
+		
+		
+		gp.nuevoMenuPedido(menuElegido);
 		}
-		
-		IntGP.nuevoMenuPedido(menuElegido);
-		
 	}
 
 	@Override
