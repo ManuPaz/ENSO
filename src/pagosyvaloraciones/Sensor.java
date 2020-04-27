@@ -10,6 +10,14 @@ public class Sensor implements InterfaceSensores {
 		return idVale;
 	}
 
+	public int getIdBandeja() {
+		return idBandeja;
+	}
+
+	public void setIdBandeja(int idBandeja) {
+		this.idBandeja = idBandeja;
+	}
+
 	@Override
 	public int  devolverIdentificadorBandeja() {
 		int idVale = (int)(Math.random()*10000+1);

@@ -37,15 +37,13 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		Date fechaActual=new Date();
 		
 		Menu menu=IntGM.obtenerMenuDia(fechaActual);
-		
-		System.out.println("MENÚ SELECCIONADO:");
-		System.out.println("--------------------------------------------");
+	
 		if(menu!=null) {
 		
 			if(!menu.getPrimeros().contains(primero)) {
 				throw new PlatoIncorrectoExcepcion("Primero introducido inválido.");
 			}else {
-				System.out.println("Primero -> "+primero);
+				
 				menuElegido.setPrimero(primero);
 				
 			}
@@ -55,7 +53,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 			if(!menu.getSegundos().contains(segundo)) {
 				throw new PlatoIncorrectoExcepcion("Segundo introducido inválido.");
 			}else {
-				System.out.println("Segundo -> "+segundo);
+				
 				menuElegido.setSegundo(segundo);
 				
 			}
@@ -63,7 +61,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 			if(!menu.getPostres().contains(postre)) {
 				throw new PlatoIncorrectoExcepcion("Postre introducido inválido.");
 			}else {
-				System.out.println("Postre -> "+postre);
+				
 				menuElegido.setPostre(postre);
 				
 			}
@@ -73,7 +71,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 			if(!this.bebidas.contains(bebida)) {
 				throw new PlatoIncorrectoExcepcion("Bebida introducida inválida.");
 			}else {
-				System.out.println("Bebida -> "+bebida);
+				
 				menuElegido.setBebida(bebida);
 				
 			}
@@ -84,7 +82,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 	}
 
 	@Override
-	public void ofrecerMenu() throws NoHayMenuExcepcion {
+	public Menu ofrecerMenu() throws NoHayMenuExcepcion {
 		GestionMenus GM = new GestionMenus();
 		InterfaceGestionDeMenus IntGM = GM;
 		Date fechaActual=new Date();
@@ -96,32 +94,13 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 			 throw new NoHayMenuExcepcion();
 			
 		}
-		System.out.println("Primeros del dia:");
-		for(String primero:menu.getPrimeros()) {
-			System.out.println("-"+primero);
-		}
-		
-		System.out.println("Segundos del dia:");
-		
-		for(String segundo:menu.getSegundos()) {
-			System.out.println("-"+segundo);
-		}
-		
-		System.out.println("Postres del dia:");
-		
-		for(String postre:menu.getPostres()) {
-			System.out.println("-"+postre);
-		}
+		return menu;
 		
 	}
 
 	@Override
 	public ArrayList<String> ofrecerBebidas() {
 		
-		for(String bebida:this.bebidas) {
-			System.out.print("-"+bebida);
-		}
-		
-		return null;
+		return this.bebidas;
 	}
 }

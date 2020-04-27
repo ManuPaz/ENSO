@@ -11,7 +11,7 @@ public interface InterfaceSeleccionMenus {
 	public void seleccionarMenu(String primero, String segundo, String bebida, String postre) throws PlatoIncorrectoExcepcion;
 	
 	//Coger todos los platos del menu del dia
-	public void ofrecerMenu()  throws NoHayMenuExcepcion;
+	public Menu ofrecerMenu()  throws NoHayMenuExcepcion;
 	
 	public ArrayList<String> ofrecerBebidas();
 }
