@@ -126,12 +126,39 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 	public void insertarMenu(Menu menu) {
 
 		String filename = "src\\ficheros\\menus.txt";
-
+		boolean yaExiste = false;
+		String[] partes;
+		String linea;
+		Date fecha = menu.getFecha();
+		String[] fechaMenuFormateado = fecha.toString().split(" ");
+		
 		try {
-			if (menu != null) {
+			FileReader fr = new FileReader(filename);
+			BufferedReader bf = new BufferedReader(fr);
 
-				FileReader fr = new FileReader(filename);
-				BufferedReader bf = new BufferedReader(fr);
+			while ((linea = bf.readLine()) != null) {
+				partes = linea.split(",");
+				if (partes.length == 10) {
+					String fechaMenu = partes[0];
+
+					if (fechaMenu.split(" ")[2].equals(fechaMenuFormateado[2])
+							&& fechaMenu.split(" ")[1].equals(fechaMenuFormateado[1])
+							&& fechaMenu.split(" ")[5].equals(fechaMenuFormateado[5])) {
+						
+						yaExiste = true;
+						System.out.println("Ya existe un menú para el día introducido");
+						break;
+					}
+				}
+			}
+
+			bf.close();
+			fr.close();
+			
+			if (menu != null && !yaExiste) {
+
+				fr = new FileReader(filename);
+				bf = new BufferedReader(fr);
 				int nLineas = 0;
 
 				while (bf.readLine() != null) {
@@ -270,9 +297,10 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 			System.out.println(e.getMessage());
 		}
 
-		if (menusSemana.size() > 0) {
+		if(menusSemana.size()>0) {
 			return menusSemana;
-		} else {
+		}else {
+			System.out.println("Todavía no hay un menú establecido para ningún día de la semana");
 			return null;
 		}
 	}

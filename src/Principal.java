@@ -70,13 +70,17 @@ public class Principal {
 			System.out.println("\n>Consultar Menu Semana");
 			ArrayList<Menu> menus= new ArrayList<>();
 			menus = gD.consultarMenusSemana();
-			for(int i=0; i<menus.size(); i++) {
-				System.out.println(menus.get(i).getFecha() + " " + menus.get(i).getPrimeros());
+			if(menus!=null) {
+				for(int i=0; i<menus.size(); i++) {
+					System.out.println(menus.get(i).getFecha() + " " + menus.get(i).getPrimeros());
+				}
 			}
-			
+				
 			System.out.println("\n>Consultar Menu Hoy");
 		    Menu menu = gD.consultarMenuHoy();
-			System.out.println(menu.getFecha() + " " + menu.getPrimeros());
+		    if(menu!=null) {
+		    	System.out.println(menu.getFecha() + " " + menu.getPrimeros());
+		    }
 			
 			System.out.println("\n>Insertar menu");
 			ArrayList<String> primeros = new ArrayList<>();
