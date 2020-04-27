@@ -6,5 +6,6 @@ public interface InterfaceSensores {
 	
 	public int devolverIdentificadorBandeja();
 	
-	public void simularTiempoYDevolverBandeja(InterfaceGestionDePagosYCalificaciones GP);
+	
+	public void simularDevolucionBandeja(InterfaceGestionDePagosYCalificaciones GP,int bandeja);
 }
