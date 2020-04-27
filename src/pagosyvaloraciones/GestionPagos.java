@@ -15,6 +15,7 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 	private MenuElegido menuElegido;
 	private Date horaDevolucion;
 	private InterfaceSensores IS;
+	
 	public GestionPagos(InterfaceSensores IS) {
 		this.IS=IS;
 		this.identificadorBandeja=-1;

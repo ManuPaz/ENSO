@@ -2,8 +2,6 @@ package menus;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
-
 import Excepciones.FechaIncorrectaExcepcion;
 import Excepciones.PlatoIncorrectoExcepcion;
 import datos.GestionDatos;
@@ -11,7 +9,8 @@ import datos.InterfaceDeGestionDeDatos;
 
 public class GestionMenus implements InterfaceGestionDeMenus{
 	
-	public void construirMenuDia(Date fecha,ArrayList<String> primero,ArrayList<String>segundo,ArrayList<String>postre) throws PlatoIncorrectoExcepcion, FechaIncorrectaExcepcion {
+	public void construirMenuDia(Date fecha, ArrayList<String> primero, ArrayList<String>segundo, ArrayList<String>postre) throws PlatoIncorrectoExcepcion, FechaIncorrectaExcepcion {
+		
 		GestionDatos GD = new GestionDatos();
 		InterfaceDeGestionDeDatos IntGD = GD;
 		Menu menuDelDia = new Menu();
@@ -81,11 +80,10 @@ public class GestionMenus implements InterfaceGestionDeMenus{
 	}
 
 	@Override
-	public Menu obtenerMenuDia(Date fecha) {
+	public Menu obtenerMenuDia() {
 		
 		GestionDatos GD = new GestionDatos();
 		InterfaceDeGestionDeDatos IntGD = GD;
-		Date fecha1= new Date();
 		
 		return IntGD.consultarMenuHoy();
 	}
@@ -95,7 +93,6 @@ public class GestionMenus implements InterfaceGestionDeMenus{
 		
 		GestionDatos GD = new GestionDatos();
 		InterfaceDeGestionDeDatos IntGD = GD;
-		
 		
 		return IntGD.consultarMenusSemana();
 	}

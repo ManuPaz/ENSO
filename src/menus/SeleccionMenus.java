@@ -34,14 +34,13 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		
 		GestionMenus GM = new GestionMenus();
 		InterfaceGestionDeMenus IntGM = GM;
-		Date fechaActual=new Date();
 		
-		Menu menu=IntGM.obtenerMenuDia(fechaActual);
+		Menu menu=IntGM.obtenerMenuDia();
 	
 		if(menu!=null) {
 		
 			if(!menu.getPrimeros().contains(primero)) {
-				throw new PlatoIncorrectoExcepcion("Primero introducido inválido.");
+				throw new PlatoIncorrectoExcepcion("Primero introducido invalido.");
 			}else {
 				
 				menuElegido.setPrimero(primero);
@@ -51,7 +50,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		
 		
 			if(!menu.getSegundos().contains(segundo)) {
-				throw new PlatoIncorrectoExcepcion("Segundo introducido inválido.");
+				throw new PlatoIncorrectoExcepcion("Segundo introducido invalido.");
 			}else {
 				
 				menuElegido.setSegundo(segundo);
@@ -59,7 +58,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 			}
 		
 			if(!menu.getPostres().contains(postre)) {
-				throw new PlatoIncorrectoExcepcion("Postre introducido inválido.");
+				throw new PlatoIncorrectoExcepcion("Postre introducido invalido.");
 			}else {
 				
 				menuElegido.setPostre(postre);
@@ -69,7 +68,7 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		
 		
 			if(!this.bebidas.contains(bebida)) {
-				throw new PlatoIncorrectoExcepcion("Bebida introducida inválida.");
+				throw new PlatoIncorrectoExcepcion("Bebida introducida invalida.");
 			}else {
 				
 				menuElegido.setBebida(bebida);
@@ -85,9 +84,8 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 	public Menu ofrecerMenu() throws NoHayMenuExcepcion {
 		GestionMenus GM = new GestionMenus();
 		InterfaceGestionDeMenus IntGM = GM;
-		Date fechaActual=new Date();
 		
-		Menu menu=IntGM.obtenerMenuDia(fechaActual);
+		Menu menu=IntGM.obtenerMenuDia();
 		
 		
 		if(menu==null) {

@@ -13,7 +13,7 @@ public interface InterfaceGestionDeMenus {
 	
 	public ArrayList<Plato> obtenerPlatosDisponibles(String tipo);
 	
-	public Menu obtenerMenuDia(Date fecha);
+	public Menu obtenerMenuDia();
 	
 	public ArrayList<Menu> consultarMenusSemana();
 }
