@@ -47,9 +47,7 @@ public class Principal {
 		iAE.tiempoMedioDuracion();
 		iAE.rankingValoracion();
 		
-		
-		
-		
+
 
 		// SUBSISTEMA DE GESTION DE DATOS
 		// Insertar factura
@@ -97,6 +95,8 @@ public class Principal {
 		// Consultar Factura
 		iGD.consultarFactura();
 		
+		
+		
 		// SUBSISTEMA DE GESTION DE MENUS
 		//Obtener menu del dia
 		iGM.obtenerMenuDia();
@@ -131,7 +131,7 @@ public class Principal {
 				
 		//SUBSITEMA DE SELECCION DE MENUS
 		String primero="Sopa";
-		String segundo="Lasaña de verduras";
+		String segundo="Merluza a la gallega";
 		String bebida="Agua";
 		String postre="Fruta";
 		
@@ -156,7 +156,7 @@ public class Principal {
 		MenuElegido menuElegido2 = new MenuElegido ("Croquetas","Paella","Natillas","Agua");
 		iGPC.nuevoMenuPedido(menuElegido2);
 		//Simulamos la devolucion de la bandeja ayudandonos del subsistema de sensores
-		int codigo= s.getIdBandeja().get(1);
+		int codigo= s.getIdBandeja().get(0);
 		Date hora = new Date();
 		iGPC.bandejaDevuelta(hora, codigo);
 		iS.simularDevolucionBandeja(iGPC, codigo);
