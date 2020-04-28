@@ -15,13 +15,14 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 	private ArrayList<Date> horaAsignacion;
 	private ArrayList<MenuElegido> menuElegido;
 	private InterfaceSensores IS;
-	private Date horaDevolucion;
+	private ArrayList<Date> horaDevolucion;
 
 	public GestionPagos(InterfaceSensores IS) {
 		this.IS = IS;
 		this.identificadorBandeja = new ArrayList<>();
 		this.menuElegido = new ArrayList<>();
 		this.horaAsignacion = new ArrayList<>();
+		this.horaDevolucion=new ArrayList<>();
 
 	}
 
@@ -41,7 +42,11 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 	@Override
 	public void bandejaDevuelta(Date hora, int IdentificadorBandeja) {
 		// TODO Auto-generated method stub
-		this.horaDevolucion = hora;
+		if(this.identificadorBandeja.contains(IdentificadorBandeja)) {
+			int i=this.identificadorBandeja.indexOf(IdentificadorBandeja);
+		this.horaDevolucion.add(i, hora);
+			
+		}
 	}
 
 	@Override
@@ -49,16 +54,17 @@ public class GestionPagos implements InterfaceGestionDePagosYCalificaciones {
 		// TODO Auto-generated method stub
 		if (this.horaDevolucion != null && this.identificadorBandeja.contains(identificadorBandeja)) {
 			int i = this.identificadorBandeja.indexOf(identificadorBandeja);
-			if (this.menuElegido.get(i).getPrimero().equals(plato) || this.menuElegido.get(i).getPostre().equals(plato)
+			if (this.horaDevolucion.size()>i&&this.menuElegido.get(i).getPrimero().equals(plato) || this.menuElegido.get(i).getPostre().equals(plato)
 					|| this.menuElegido.get(i).getSegundo().equals(plato)) {
-				Valoracion valo = new Valoracion(this.horaAsignacion.get(i), this.horaDevolucion, identificadorBandeja,
+				Valoracion valo = new Valoracion(this.horaAsignacion.get(i), this.horaDevolucion.get(i), identificadorBandeja,
 						plato, valoracion);
 				InterfaceDeGestionDeDatos GD = new GestionDatos();
 				GD.insertarValoracion(valo);
 				this.identificadorBandeja.remove(i);
 				this.menuElegido.remove(i);
 				this.horaAsignacion.remove(i);
-				this.horaDevolucion = null;
+				this.horaDevolucion.remove(i);
+				
 			}
 		}
 

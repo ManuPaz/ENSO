@@ -44,12 +44,14 @@ public class Sensor implements InterfaceSensores {
 			long segundos = minutos/10;
 			//Hacer un sleep de los segundos
 			try {
-			Thread.sleep(segundos);
+			Thread.sleep(segundos*1000);
 			} catch (InterruptedException e) {
 			e.printStackTrace();
 			}
+			
 		Date hora=new Date();
-		P.bandejaDevuelta(hora, bandeja);
+		Date date=new Date(hora.getTime()+minutos*1000*60);
+		P.bandejaDevuelta(date, bandeja);
 		
 		
 	

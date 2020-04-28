@@ -1,4 +1,0 @@
-Sun Apr 26 19:29:31 CEST 2020,Ensaladilla,Croquetas,Empanada,Paella,Macarrones con pesto,Merluza al horno,Natillas,Yogur de sabores,Manzana
-Sun Apr 26 19:29:31 CEST 2020,Ensaladilla,Croquetas,Empanada,Paella,Macarrones con pesto,Merluza al horno,Natillas,Yogur de sabores,Manzana
-Mon Apr 27 16:26:51 CEST 2020,Sopa,Empanada,Ensaladilla,Lasaña de verduras,Raxo con patatas,Merluza a la gallega,Arroz con leche,Natillas,Fruta
-Tue Apr 28 12:02:31 CEST 2020,Sopa,Empanada,Ensaladilla,Lasanha de verduras,Raxo con patatas,Merluza a la gallega,Arroz con leche,Natillas,Fruta
