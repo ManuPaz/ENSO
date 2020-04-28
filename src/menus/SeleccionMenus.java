@@ -1,12 +1,9 @@
 package menus;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
 
 import Excepciones.NoHayMenuExcepcion;
 import Excepciones.PlatoIncorrectoExcepcion;
-import pagosyvaloraciones.GestionPagos;
 import pagosyvaloraciones.InterfaceGestionDePagosYCalificaciones;
 
 public class SeleccionMenus implements InterfaceSeleccionMenus{
@@ -30,8 +27,6 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		
 		MenuElegido menuElegido=new MenuElegido();
 		
-		
-		
 		GestionMenus GM = new GestionMenus();
 		InterfaceGestionDeMenus IntGM = GM;
 		
@@ -39,44 +34,25 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 	
 		if(menu!=null) {
 		
-			if(!menu.getPrimeros().contains(primero)) {
+			if(!menu.getPrimeros().contains(primero))
 				throw new PlatoIncorrectoExcepcion("Primero introducido invalido.");
-			}else {
-				
-				menuElegido.setPrimero(primero);
-				
-			}
+			menuElegido.setPrimero(primero);
+
 		
-		
-		
-			if(!menu.getSegundos().contains(segundo)) {
+			if(!menu.getSegundos().contains(segundo))
 				throw new PlatoIncorrectoExcepcion("Segundo introducido invalido.");
-			}else {
-				
-				menuElegido.setSegundo(segundo);
-				
-			}
+			menuElegido.setSegundo(segundo);
+
 		
-			if(!menu.getPostres().contains(postre)) {
+			if(!menu.getPostres().contains(postre))
 				throw new PlatoIncorrectoExcepcion("Postre introducido invalido.");
-			}else {
-				
-				menuElegido.setPostre(postre);
-				
-			}
+			menuElegido.setPostre(postre);
 		
-		
-		
-			if(!this.bebidas.contains(bebida)) {
+			if(!this.bebidas.contains(bebida))
 				throw new PlatoIncorrectoExcepcion("Bebida introducida invalida.");
-			}else {
-				
-				menuElegido.setBebida(bebida);
-				
-			}
+			menuElegido.setBebida(bebida);	
 		
-		
-		gp.nuevoMenuPedido(menuElegido);
+			gp.nuevoMenuPedido(menuElegido);
 		}
 	}
 
@@ -102,3 +78,4 @@ public class SeleccionMenus implements InterfaceSeleccionMenus{
 		return this.bebidas;
 	}
 }
+

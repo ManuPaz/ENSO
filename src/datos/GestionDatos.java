@@ -66,9 +66,6 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 			System.out.println(e.getMessage());
 		}
 
-		if (platos.size() == 0) {
-			System.out.println("No hay platos que leer en el archivo, o no están escritos en el formato adecuado");
-		}
 		return platos;
 	}
 
@@ -146,7 +143,6 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 							&& fechaMenu.split(" ")[5].equals(fechaMenuFormateado[5])) {
 						
 						yaExiste = true;
-						System.out.println("Ya existe un menú para el día introducido");
 						break;
 					}
 				}
@@ -300,7 +296,6 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 		if(menusSemana.size()>0) {
 			return menusSemana;
 		}else {
-			System.out.println("Todavía no hay un menú establecido para ningún día de la semana");
 			return null;
 		}
 	}
@@ -370,7 +365,6 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 			System.out.println(e.getMessage());
 		}
 
-		System.out.println("Todavía no hay un menú establecido para ese día de la semana");
 		return null;
 	}
 
@@ -405,10 +399,6 @@ public class GestionDatos implements InterfaceDeGestionDeDatos {
 			fr.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		}
-
-		if (facturas.size() == 0) {
-			System.out.println("No hay facturas en el fichero");
 		}
 
 		return facturas;

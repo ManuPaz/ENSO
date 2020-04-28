@@ -6,3 +6,7 @@
 123,90,Sopa de fideos,Lubina a la plancha,Flan,Agua con gas,6.0
 123,90,Sopa de fideos,Lubina a la plancha,Flan,Agua con gas,6.0
 123,90,Sopa de fideos,Lubina a la plancha,Flan,Agua con gas,6.0
+123,90,Sopa de fideos,Lubina a la plancha,Flan,Agua con gas,6.0
+9500,7660,Croquetas,Paella,Natillas,Agua,6.0
+123,90,Sopa de fideos,Lubina a la plancha,Flan,Agua con gas,6.0
+2212,6623,Croquetas,Paella,Natillas,Agua,6.0
